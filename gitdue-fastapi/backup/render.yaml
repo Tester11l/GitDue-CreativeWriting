@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: gitdue
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: TO_EMAIL
+        value: s32240166@student.ubm.ac.id
+      - key: BREVO_API_KEY
+        sync: false
+      - key: BREVO_SENDER
+        sync: false
